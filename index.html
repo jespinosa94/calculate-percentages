@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Percentage Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Percentage Calculator</h1>
+  <form onsubmit="calculatePercentages(event)">
+    <label for="inputNumber">Enter a number: </label>
+    <input type="number" id="inputNumber" required>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    function calculatePercentages(event) {
+      event.preventDefault();
+      const inputNumber = parseFloat(document.getElementById('inputNumber').value);
+      if (isNaN(inputNumber)) {
+        alert('Please enter a valid number.');
+        return;
+      }
+
+      const fiftyPercent = (inputNumber * 0.5).toFixed(2);
+      const twentyPercent = (inputNumber * 0.2).toFixed(2);
+      const thirtyPercent = (inputNumber * 0.3).toFixed(2);
+
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = `
+        <p>50% of ${inputNumber} is: ${fiftyPercent}</p>
+        <p>20% of ${inputNumber} is: ${twentyPercent}</p>
+        <p>30% of ${inputNumber} is: ${thirtyPercent}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
